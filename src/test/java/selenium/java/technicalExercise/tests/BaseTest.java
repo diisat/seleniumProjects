@@ -20,12 +20,13 @@ public class BaseTest {
      * Setup
      */
     @BeforeClass
-    protected void setup() {
+    protected void setup() throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver","/src/test/resources/drivers/chromedriver.exe");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         //String url = System.getenv("test.url");
         driver.get("https://www.teaminternational.com/#industry");
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
